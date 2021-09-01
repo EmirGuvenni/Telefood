@@ -8,7 +8,8 @@
   "private": false,
   "dependencies": {
     "convert-excel-to-json": "^1.7.0",
-    "telegraf": "^4.4.1"
+    "telegraf": "^4.4.1",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@types/convert-excel-to-json": "^1.7.1",
