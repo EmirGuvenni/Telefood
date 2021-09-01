@@ -6,6 +6,10 @@
   "author": "Emir Güvenni <contact@emirguvenni.com>",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "build": "tsc --project .",
+    "start": "node ."
+  },
   "dependencies": {
     "convert-excel-to-json": "^1.7.0",
     "node-schedule": "^2.0.0",
