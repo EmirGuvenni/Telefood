@@ -1,0 +1,16 @@
+{
+  "name": "Telefood",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "repository": "git@github.com:EmirGuvenni/Telefood.git",
+  "author": "Emir Güvenni <contact@emirguvenni.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "telegraf": "^4.4.1"
+  },
+  "devDependencies": {
+    "@types/node": "^16.7.10",
+    "typescript": "^4.4.2"
+  }
+}
