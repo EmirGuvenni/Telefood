@@ -14,10 +14,17 @@ if (!process.env.CHAT_ID) {
 import { Telegraf } from "telegraf";
 
 // Start the bot
-const bot = new Telegraf(process.env.BOT_TOKEN);
+const bot = new Telegraf(process.env.BOT_TOKEN!);
+bot
+	.launch()
+	.then(() => {
+		logger.info('Bot started');
+	})
+	.catch((err) => {
+		logger.error('Failed to start the bot: ' + err);
+		process.exit(1);
+	});
 
-// Start a webhook to listen for a incoming menu
-bot.telegram.setWebhook(process.env.WEBHOOK_URL);
 
 // Graceful stop
 process.once("SIGINT", () => {
