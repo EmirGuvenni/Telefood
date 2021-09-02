@@ -65,8 +65,6 @@ bot.on('message', async (ctx) => {
 
   // Group days and meals
   //
-  // NOTE: There's a bug with the xlsx package that makes it show a month later as the date
-  //
   // For this to work, the excel file must be in the following format:
   //
   // {
