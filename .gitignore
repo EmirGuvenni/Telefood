@@ -1,3 +1,11 @@
+# Env files
+Dockerfile
+docker-compose.yml
+ecosystem.config.js
+
+# Uploaded files
+uploads/
+
 # Logs
 logs
 *.log
