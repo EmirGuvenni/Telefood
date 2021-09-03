@@ -184,7 +184,7 @@ bot.on('message', async (ctx) => {
     return menu;
   })();
 
-  let path: string = `${__dirname}/../uploads/${crypto
+  let path: string = `${__dirname}/../uploads/${getYear()}.${getMonth()}_${crypto
     .createHash('md5')
     .update(JSON.stringify(menuJson))
     .digest('hex')}.json`;
