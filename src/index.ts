@@ -193,6 +193,7 @@ bot.on('message', async (ctx) => {
 
   // Save the menu to the /uploads directory as a JSON file
   fs.writeFileSync(path, JSON.stringify(menuJson));
+  ctx.reply('Menü başarıyla kaydedildi.');
   logger.info('Menu file uploaded');
 });
 
