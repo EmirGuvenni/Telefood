@@ -128,6 +128,8 @@ bot.on('message', async (ctx) => {
   //
   // Expected output:
   //
+  // NOTE: It should remove the day of the week
+  //
   // {
   //   "2021-07-31": [
   //     "DOMATESLİ ARPA ŞEHRİYE ÇORBA",
