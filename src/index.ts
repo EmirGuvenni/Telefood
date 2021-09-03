@@ -166,15 +166,9 @@ bot.on('message', async (ctx) => {
 
           if (new Date(cols[i]).getTime() > 0) {
             let rawDate: Date = new Date(cols[i]);
-            let setDayDate: Date = new Date(
-              rawDate.setDate(rawDate.getDate() + 1)
-            );
-            let setMonthDate: Date = new Date(
-              setDayDate.setMonth(setDayDate.getMonth() - 1)
-            );
+            let date: Date = new Date(rawDate.setDate(rawDate.getDate() + 1));
 
-            pointer = setMonthDate.toLocaleString();
-
+            pointer = getDate(date);
             menu[pointer] = [];
           } else menu[pointer].push(cols[i]);
         });
