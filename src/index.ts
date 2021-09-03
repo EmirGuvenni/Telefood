@@ -64,6 +64,19 @@ bot
     process.exit(1);
   });
 
+// Send the message at 11:30 every weekday
+const job: Job = schedule.scheduleJob('30 11 * * 0-5', () => {
+  let menu = menuJsonToMap();
+  let todaysMenu: string[] = menu.get(getDate());
+
+  if (todaysMenu)
+    bot.telegram.sendMessage(
+      process.env.CHAT_ID!,
+      `Günün Menüsü:\n-${todaysMenu.join('\n-')}`
+    );
+  else
+    bot.telegram.sendMessage(process.env.CHAT_ID!, 'Günün menüsü bulunamadı.');
+});
 
 // Get the xlsx file
 bot.on('message', async (ctx) => {
