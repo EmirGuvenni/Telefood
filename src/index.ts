@@ -36,6 +36,22 @@ function menuJsonToMap(): Map<string, any> {
   return menuMap;
 }
 
+function getYear(date: Date = new Date()): number {
+  return date.getFullYear();
+}
+
+function getMonth(date: Date = new Date()): number {
+  return date.getMonth();
+}
+
+function getToday(date: Date = new Date()): number {
+  return date.getDate();
+}
+
+function getDate(date?: Date): string {
+  return `${getToday(date)}.${getMonth(date)}.${getYear(date)}`;
+}
+
 // Start the bot
 const bot = new Telegraf(process.env.BOT_TOKEN!);
 bot
