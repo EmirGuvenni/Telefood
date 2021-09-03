@@ -2,10 +2,6 @@ if (!process.env.BOT_TOKEN) {
   console.error('BOT_TOKEN is not set.');
   process.exit(1);
 }
-if (!process.env.WEBHOOK_URL) {
-  console.error('WEBHOOK_URL is not set.');
-  process.exit(1);
-}
 if (!process.env.CHAT_ID) {
   console.error('CHAT_ID is not set.');
   process.exit(1);
