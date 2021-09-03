@@ -19,6 +19,23 @@ import fetch from 'node-fetch';
 
 const logger = pino();
 
+function menuJsonToMap(): Map<string, any> {
+  let file: string = '';
+  let month: string = `${getYear()}.${getMonth()}`;
+
+  fs.readdirSync(__dirname + '/../uploads').some((fileName: string) => {
+    file = __dirname + '/../uploads/' + fileName;
+    return fileName.startsWith(month);
+  });
+
+  let menuMap: Map<string, any> = new Map(
+    Object.entries(JSON.parse(fs.readFileSync(file).toString()))
+  );
+  menuMap.set('date', `${getYear()}.${getMonth()}`);
+
+  return menuMap;
+}
+
 // Start the bot
 const bot = new Telegraf(process.env.BOT_TOKEN!);
 bot
