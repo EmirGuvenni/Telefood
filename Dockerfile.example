@@ -1,0 +1,12 @@
+FROM node:lts-alpine
+
+WORKDIR /TeleFood
+COPY . /TeleFood
+
+RUN yarn install
+RUN yarn build
+
+ENV BOT_TOKEN=
+ENV CHAT_ID=
+
+CMD yarn start
