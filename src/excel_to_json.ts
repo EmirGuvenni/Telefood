@@ -106,13 +106,18 @@ function sortTheMenu(sortedMenuJson: object) {
           page.splice(index, 1);
       });
 
+      let isFullLoop: boolean = true;
       let pointer: string = '';
 
-      for (let i = 0; i < 5; i++) {
+      // Messy while loop with an index selector
+      for (let i = 0; isFullLoop; i++) {
+        isFullLoop = false;
         page.forEach((row: any) => {
           let cols: string[] = Object.values(row);
 
           if (!cols[i]) return;
+
+          isFullLoop = true;
 
           if (new Date(cols[i]).getTime() > 0) {
             let rawDate: Date = new Date(cols[i]);
