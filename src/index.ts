@@ -38,17 +38,21 @@ const job: Job = schedule.scheduleJob('30 11 * * 0-5', () => {
   let menu = menuJsonToMap();
   let todaysMenu: string[] = menu.get(getDate());
 
-  if (todaysMenu)
+  if (todaysMenu) {
     bot.telegram.sendMessage(
       process.env.CHAT_ID!,
       `Günün Menüsü:\n-${todaysMenu.join('\n-')}`
     );
-  else if (!todaysMenu && menu)
+    logger.info('Sent the daily menu to the group chat.');
+  } else if (!todaysMenu && menu)
     bot.telegram.sendMessage(process.env.CHAT_ID!, 'Günün menüsü bulunamadı.');
-  else if (!menu)
+  else if (!menu) {
     bot.telegram.sendMessage(process.env.CHAT_ID!, 'Ayın menüsü bulunamadı.');
+    logger.warn('Failed to find this months menu.');
+  }
 });
 
+// The '/menu' command
 bot.command('menu', async (ctx) => {
   let menu = menuJsonToMap();
   let todaysMenu: string[] = menu.get(getDate());
