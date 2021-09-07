@@ -25,9 +25,7 @@ function getDate(date: Date = new Date()): string {
 export const bot = new Telegraf(process.env.BOT_TOKEN!);
 bot
   .launch()
-  .then(() => {
-    logger.info('Bot started');
-  })
+  .then(() => logger.info('Bot started'))
   .catch((err) => {
     logger.error('Failed to start the bot: ' + err);
     process.exit(1);
@@ -63,15 +61,9 @@ bot.command('menu', async (ctx) => {
 });
 
 // Get the xlsx file
-bot.on('message', async (ctx) => {
-  // Get the submitted files buffer, convert it, sort it and write to disk
-  xlsxToJson(ctx);
-});
+// Get the submitted files buffer, convert it, sort it and write to disk
+bot.on('message', async (ctx) => xlsxToJson(ctx));
 
 // Graceful stop
-process.once('SIGINT', () => {
-  bot.stop();
-});
-process.once('SIGTERM', () => {
-  bot.stop();
-});
+process.once('SIGINT', () => bot.stop());
+process.once('SIGTERM', () => bot.stop());
