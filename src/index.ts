@@ -50,16 +50,6 @@ const job: Job = schedule.scheduleJob('30 11 * * 0-5', () => {
   }
 });
 
-// The '/menu' command
-bot.command('menu', async (ctx) => {
-  let menu = menuJsonToMap();
-  let todaysMenu: string[] = menu.get(getDate());
-
-  if (todaysMenu) ctx.reply(`Günün Menüsü:\n-${todaysMenu.join('\n-')}`);
-  else if (!todaysMenu && menu) ctx.reply('Günün menüsü bulunamadı.');
-  else if (!menu) ctx.reply('Ayın menüsü bulunamadı.');
-});
-
 // Get the xlsx file
 // Get the submitted files buffer, convert it, sort it and write to disk
 bot.on('message', async (ctx) => xlsxToJson(ctx));
