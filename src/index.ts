@@ -17,10 +17,6 @@ import xlsxToJson from './excel_to_json';
 
 export const logger = pino();
 
-function getDate(date: Date = new Date()): string {
-  return `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
-}
-
 // Start the bot
 export const bot = new Telegraf(process.env.BOT_TOKEN!);
 bot
@@ -33,8 +29,11 @@ bot
 
 // Send the message at 11:30 every weekday
 const job: Job = schedule.scheduleJob('30 11 * * 0-5', () => {
-  let menu = menuJsonToMap();
-  let todaysMenu: string[] = menu.get(getDate());
+  let date: Date = new Date();
+  let menu: Map<string, string[]> = menuJsonToMap();
+  let todaysMenu: string[] | undefined = menu.get(
+    `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`
+  );
 
   if (todaysMenu) {
     bot.telegram.sendMessage(
