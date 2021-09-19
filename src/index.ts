@@ -27,6 +27,8 @@ bot
     process.exit(1);
   });
 
+bot.command('menu', require('./commands/menu'));
+
 // Send the message at 11:30 every weekday
 const job: Job = schedule.scheduleJob('30 11 * * 0-5', () => {
   let date: Date = new Date();
