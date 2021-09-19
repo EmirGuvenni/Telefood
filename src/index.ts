@@ -38,10 +38,12 @@ const job: Job = schedule.scheduleJob('30 11 * * 0-5', () => {
   );
 
   if (todaysMenu) {
+    // Send the menu
     bot.telegram.sendMessage(
       process.env.CHAT_ID!,
       `Günün Menüsü:\n-${todaysMenu.join('\n-')}`
     );
+
     // Ask people to wether they'll eat or not
     bot.telegram.sendPoll(
       process.env.CHAT_ID!,
