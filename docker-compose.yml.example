@@ -10,3 +10,5 @@ services:
     environment:
       - BOT_TOKEN:
       - CHAT_ID:
+    restart:
+          condition: on-failure
