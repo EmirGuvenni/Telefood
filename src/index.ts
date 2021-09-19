@@ -42,6 +42,17 @@ const job: Job = schedule.scheduleJob('30 11 * * 0-5', () => {
       process.env.CHAT_ID!,
       `Günün Menüsü:\n-${todaysMenu.join('\n-')}`
     );
+    // Ask people to wether they'll eat or not
+    bot.telegram.sendPoll(
+      process.env.CHAT_ID!,
+      'Yemeğe gidiyor musun?',
+      ['Evet', 'Hayır'],
+      {
+        is_anonymous: false,
+        allows_multiple_answers: false,
+        open_period: 600,
+      }
+    );
     logger.info('Sent the daily menu to the group chat.');
   } else if (!todaysMenu && menu)
     bot.telegram.sendMessage(process.env.CHAT_ID!, 'Günün menüsü bulunamadı.');
